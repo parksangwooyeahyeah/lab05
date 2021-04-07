@@ -11,7 +11,6 @@
 
 #include "Application.h"
 
-
 /**
 *	자료구조 실습을 위한 main 함수
 */
