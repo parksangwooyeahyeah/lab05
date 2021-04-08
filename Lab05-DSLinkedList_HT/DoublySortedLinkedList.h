@@ -193,6 +193,7 @@ int DoublySortedLinkedList<T>::Add(T item)
 // 싱글링크드는 두포인터가 이동해나가다가 현재 노드가 인서트하고자 하는 것보다 크면 어쩌고저쩌고
 // 더블링크드는 하나의 노드가 전과 후를 가리키기 떄문에 두개의 노드가 필없ㅇ므
 // 헤드와 트레일러를 사용해서 항상 둘사이에 인서트하는 경우로 압축됨. 애드하는 케이스를 4가지로 안나눠도됨.
+/*
 template <typename T> 
 int DoublySortedLinkedList<T>::Add(T item) 
 {
@@ -232,7 +233,7 @@ int DoublySortedLinkedList<T>::Add(T item)
 		}
 	}
 }
-
+*/
 
 
 // �Է¹��� �������� �����Ϳ��� ã�Ƴ��� �����Ѵ�.

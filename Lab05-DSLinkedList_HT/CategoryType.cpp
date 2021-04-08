@@ -3,7 +3,7 @@
 
 int CategoryType::AddToCatelist(SimpleProductType item)
 {
-    item.SetID();
+    item.SetIDFromKB();
     //doublysorted linked list´Â ÆÄ¶ó¹ÌÅÍ itemÀÇ id°¡ ÄÃÆ÷ÀÎÅÍ ³ëµå µ¥ÀÌÅÍÀÇ idº¸´Ù ÀÛÀ¸¸é »ğÀÔ
     // ÆÄ¶ó¹ÌÅÍÀÇ id°¡ ÄÃÆ÷ÀÎÅÍ µ¥ÀÌÅÍÀÇ id¿Í °°À¸¸é Áßº¹µÆ´Ù´Â °ÍÀÌ¹Ç·Î false ¹İÈ¯
     if(cateList.IsFull())
@@ -50,34 +50,27 @@ void CategoryType::DisplayCatelist()
 
 }
 
-int CategoryType::FindProductinCate()
+int CategoryType::FindProductinCate(SimpleProductType item)
 {
-    //?ï¿½ï¿½?ï¿½ï¿½idï¿?? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
-    SimpleProductType item;
+    //Ä«Å×°í¸®¿¡¼­ »óÇ°À» °Ë»öÇÑ´Ù
+    //»óÇ°ÀÌ ÀÖÀ¸¸é id¸¦ ¹Ş°í m_list¿¡¼­ Á¤º¸¸¦ °¡Á®¿Í¼­ Ãâ·Â¤¾³ª´Ù.
+    
     ItemType data;
-    item.SetIDFromKB();
 
-    //?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½idï¿?? catelist?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ id??? ?ï¿½ï¿½ì¹˜í•˜?ï¿½ï¿½ï¿?? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
-    if(cateList.Retrieve(item))
- 
-
+    //getÇÔ¼ö´Â ´õºí¸µÅ©¸®½ºÆ®¸¦ Ã³À½ºÎÅÍ ³¡±îÁö ½ºÄµ¶°¼­ ÇöÀç³ëµå¿Í item³ëµåÀÇ id°¡ ÀÏÄ¡ÇÏ¸é º¹»çÇØÁØ´Ù. ±×¸®°í ¸®ÅÏ1
+    if(cateList.Get(item))
     {
-        //ë§ˆìŠ¤?ï¿½ï¿½ë¦¬ìŠ¤?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ idï¿?? ?ï¿½ï¿½ì¹˜í•˜?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ì°¾ëŠ”?ï¿½ï¿½.
+        
         data.SetId(item.GetID());
-
         //idï¿?? ?ï¿½ï¿½ì¹˜í•˜?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿??
-        if(m_list.Retrieve(data) != -1)
-        {
-            // ?ï¿½ï¿½ë³´ï¿½?? ?ï¿½ï¿½ë©´ì— ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½. 
-            data.DisplayRecordOnScreen();
-        }
+        m_list.Retrieve(data);
+        data.DisplayRecordOnScreen();
+        return 1;
+    }
 
-        //idï¿?? ?ï¿½ï¿½ì¹˜í•˜?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿?? 
-        else
-        {
-            //?ï¿½ï¿½?ï¿½ï¿½ï¿?? ?ï¿½ï¿½ï¿?? ë©”ì„¸ï¿??ï¿?? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
-            cout << "Not Found" << endl;
-        }
-
+    else
+    {
+        cout << "Not found" << endl;
+        return 0;
     }
 }

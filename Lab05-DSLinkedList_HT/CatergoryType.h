@@ -10,7 +10,7 @@ public:
 
     int AddToCatelist(SimpleProductType item);
     void DisplayCatelist();
-    int FindProductinCate();
+    int FindProductinCate(SimpleProductType item);
 
 private:
     int itemNum;
