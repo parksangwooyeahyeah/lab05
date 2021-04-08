@@ -10,16 +10,16 @@ template<typename T>
 class DoublySortedLinkedList;
 
 /**
-*	¿¬°á¸®½ºÆ®¿¡¼­ ¾²ÀÌ´Â IteratorÀÇ Å¬·¡½º.
+*	ï¿½ï¿½ï¿½á¸®ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ Iteratorï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½.
 */
 template <typename T>
 class DoublyIterator
 {
 	friend class DoublySortedLinkedList<T>;
 public:
-	DoublyIterator(const DoublySortedLinkedList<T> &list) : m_List(list), m_pCurPointer(list.m_pFirst)
+	DoublyIterator(const DoublySortedLinkedList<T> &list) : m_List(list), m_pCurPointer(list.m_pFirst) // ì— í”¼í¼ìŠ¤íŠ¸ëŠ” í—¤ë”
 	{};
-	// set the current pointer to the first node
+	// set the current pointer to the first node í—¤ë“œë‹¤ìŒ. í—¤ë“œì™€ íŠ¸ë ˆì¼ëŸ¬ì—ëŠ” ë°ì´í„° ì €ìž¥ì•ˆë¨
 	void Begin() {
 		m_pCurPointer = m_List.m_pFirst->next;
 	}
@@ -27,7 +27,7 @@ public:
 	void Next() {
 		m_pCurPointer = m_pCurPointer->next;
 	}
-	// current nodeÀÇ data Æ÷ÀÎÅÍ¸¦ ¸®ÅÏ
+	// current nodeï¿½ï¿½ data ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	T* GetCurrentNode() {
 		return &m_pCurPointer->data;
 	}
