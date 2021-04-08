@@ -4,69 +4,78 @@
 int CategoryType::AddToCatelist(SimpleProductType item)
 {
     item.SetID();
-    int index = catelist.Retrieve(item);
-    if (index = -1)
+    //doublysorted linked list╢б фд╤С╧лем itemюг id╟║ дцфВюнем ЁК╣Е ╣╔юлемюг id╨╦╢ы юшю╦╦И ╩Пют
+    // фд╤С╧лемюг id╟║ дцфВюнем ╣╔юлемюг id©м ╟╟ю╦╦И аъ╨╧╣ф╢ы╢б ╟мюл╧г╥н false ╧щх╞
+    if(cateList.IsFull())
     {
-        cout << "О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫л╧О©╫ О©╫О©╫О©╫О©╫О©╫у╢о╢О©╫" << endl;
+        cout << "your catergory is full" << endl;
         return false;
     }
 
     else
     {
         cateList.Add(item);
+        cout << "i've added to your doubly linked category" << endl;
         return true;
     }
 }
 
+
 void CategoryType::DisplayCatelist()
-{
-    // catelist ?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫?О©╫О©╫Й╧▄О©╫?? К╟≤КЁ╣?О©╫О©╫?О©╫О©╫.
-    int length = cateList.GetLength();
-    SimpleProductType item;
+{   
+    // catelist©║ юж╢б simpleproducttype item╣Июг id╦╕ ╧ч╢б╢ы.(for╧╝©║╪╜ ЁК╣Еюг ю╖д║╢б ╬Н╤╩╟т ╟Аа╓гоаЖ?)
+    // itemюг id╦╕ m_list©║╪╜ цё╢б╢ы.
+    // m_list.display()
     
-    for(int Curpointer = 0; Curpointer < length ; Curpointer++)
-    {
-        //catelist?О©╫О©╫ ?О©╫О©╫?О©╫О©╫ idО©╫? ?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫.
+    
+    SimpleProductType item;
+    ItemType data;
+
+    DoublyIterator<SimpleProductType> itor(*this);
+	itor.Begin(); // ???????? ???.
+
+	for (itor.Begin(); itor.NotEnd(); itor.Next())
+	{
+        //catelist?О©╫О©╫ ?О©╫О©╫?О©╫О©╫ idО©?? ?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫.
         
-        cateList.GetNextItem(item);
-        
-        // О©╫? id??? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ m_list idО©╫? ?О©╫О©╫К╘╢Л≈░ Л╤°К═╔?О©╫О©╫?О©╫О©╫.
-        ItemType data;
+        item = itor.m_pCurPointer->data;
         data.SetId(item.GetID());
-        m_list.IsExist(data);
+        //m_listюг retrieve╢б фд╤С╧лем itemtype data╦╕ ╧ч╟М data╟║ list©║ юж╢баЖ ╬Ь╢баЖ ╦уюЗ х╝÷щ╢ы╓©.
+        // ╠в╦╝╟М юж╢б╟т х╝юн╣г╦И data©║ ╦╝╫╨ф╝©║ юж╢б а╓╨╦╦╕ ╨╧╩Ггьаь╢ы.
+        // ╠в╦╝╟М ╦╝╫╨ф╝юг ╨╧╩Ггьаь ю╖д║юн╣╕╫╨╦╕ ╧щх╞гьаь╢ы.
+        m_list.Retrieve(data);
+        // О©?? id??? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ m_list idО©?? ?О©╫О©╫К╘╢Л≈░ Л╤°К═╔?О©╫О©╫?О©╫О©╫.
         data.DisplayRecordOnScreen();
-        
-        
     }
 
 }
 
 int CategoryType::FindProductinCate()
 {
-    //?О©╫О©╫?О©╫О©╫idО©╫? ?О©╫О©╫?О©╫О©╫?О©╫О©╫?О©╫О©╫.
+    //?О©╫О©╫?О©╫О©╫idО©?? ?О©╫О©╫?О©╫О©╫?О©╫О©╫?О©╫О©╫.
     SimpleProductType item;
     ItemType data;
     item.SetIDFromKB();
 
-    //?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫idО©╫? catelist?О©╫О©╫ ?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫ id??? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫О©╫? ?О©╫О©╫?О©╫О©╫?О©╫О©╫?О©╫О©╫.
+    //?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫idО©?? catelist?О©╫О©╫ ?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫ id??? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫О©?? ?О©╫О©╫?О©╫О©╫?О©╫О©╫?О©╫О©╫.
     if(cateList.Retrieve(item))
  
 
     {
-        //К╖┬Л┼╓?О©╫О©╫К╕╛Л┼╓?О©╫О©╫?О©╫О©╫?О©╫О©╫ idО©╫? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫ Л╟╬К┼■?О©╫О©╫.
+        //К╖┬Л┼╓?О©╫О©╫К╕╛Л┼╓?О©╫О©╫?О©╫О©╫?О©╫О©╫ idО©?? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫ Л╟╬К┼■?О©╫О©╫.
         data.SetId(item.GetID());
 
-        //idО©╫? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫О©╫?
+        //idО©?? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫О©??
         if(m_list.Retrieve(data) != -1)
         {
             // ?О©╫О©╫КЁ╢О©╫?? ?О©╫О©╫К╘╢Л≈░ ?О©╫О©╫?О©╫О©╫?О©╫О©╫. 
             data.DisplayRecordOnScreen();
         }
 
-        //idО©╫? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫О©╫? 
+        //idО©?? ?О©╫О©╫Л╧≤М∙≤?О©╫О©╫ ?О©╫О©╫?О©╫О©╫?О©╫О©╫ ?О©╫О©╫?О©╫О©╫О©?? 
         else
         {
-            //?О©╫О©╫?О©╫О©╫О©╫? ?О©╫О©╫О©╫? К╘■Л└╦О©╫?О©╫? ?О©╫О©╫?О©╫О©╫?О©╫О©╫
+            //?О©╫О©╫?О©╫О©╫О©?? ?О©╫О©╫О©?? К╘■Л└╦О©??О©?? ?О©╫О©╫?О©╫О©╫?О©╫О©╫
             cout << "Not Found" << endl;
         }
 
