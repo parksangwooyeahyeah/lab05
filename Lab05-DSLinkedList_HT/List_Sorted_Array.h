@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "ItemType.h"
+#include "DoublyIterator.h"
 
 #define MAXSIZE 50
 
@@ -16,7 +17,7 @@ private:
     T m_Array[MAXSIZE];
     int m_Length;
     int m_CurPointer;
-
+    DoublyIterator<T> itor(*this);
 public:
 	// Default constructor
     List_Sorted_Array()
