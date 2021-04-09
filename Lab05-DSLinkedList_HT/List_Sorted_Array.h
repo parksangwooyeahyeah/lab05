@@ -206,8 +206,13 @@ int List_Sorted_Array<T>::GetNextItem(T& data)
 
 template <typename T>
 int List_Sorted_Array<T>::IsExist(T data) {
-	int CurPos = 0;
-	bool moreToSearch = true, found = false;
+	
+    //int CurPos = 0;
+	DoublyIterator<ItemType> itor(m_Array);
+    
+
+    /*
+    bool moreToSearch = true, found = false;
 	while (moreToSearch && !found)
 	{
 		if (data > m_Array[CurPos]) {
@@ -218,6 +223,25 @@ int List_Sorted_Array<T>::IsExist(T data) {
 	}
 	if (found && data == m_Array[CurPos]) return CurPos;
 	else 	return -1;
+    */
+   bool found = false;
+   for(itor.Begin(); itor.NotEnd(); itor.Next())
+   {
+       if(data > itor.GetCurrentNode())
+       {
+           continue;
+       }
+       else
+       {
+           found = true;
+           break;
+       }
+   }
+   if (found && data == itor.GetCurrentNode())
+   {
+       return m_CurPointer;
+   }
+   else return -1;
 }
 
 template <typename T>
