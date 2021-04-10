@@ -7,6 +7,7 @@
 using namespace std;
 
 #include "DoublySortedLinkedList.h"
+#include "CategoryType.h"
 
 
 #define FILENAMESIZE 1024
@@ -136,7 +137,7 @@ public:
 private:
 	ifstream m_InFile;		///< �Է� ���� ��ũ����.
 	ofstream m_OutFile;		///< ��� ���� ��ũ����.
-	DoublySortedLinkedList<ItemType>m_List; ///< ������ ����Ʈ.
+	DoublySortedLinkedList<CategoryType> m_category; ///< ������ ����Ʈ.
 	int m_Command;			///< ���� command ����.
 };
 

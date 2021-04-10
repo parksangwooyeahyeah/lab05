@@ -2,17 +2,16 @@
 #include "List_Sorted_Array.h"
 #include "SimpleProductType.h"
 #include "List_Sorted_SingleLink.h"
+#include "subcategorytype.h"
 
 #define MaxSize 5
 
 class CategoryType
 {
 public:
-    CategoryType()
+    CategoryType(const DoublySortedLinkedList<CategoryType> &category) : m_category(category)
     {
-       category = new List_Sorted_Array<string> subcatecory;
-        List_Sorted_Array<SimpleProductType> *subcatecory = new List_Sorted_Array<SimpleProductType> subsubcategory;
-
+      category = new doubly
     }
     ~CategoryType(){}
 
@@ -22,9 +21,6 @@ public:
 
 private:
     int itemNum;
-    List_Sorted_Array<string> ***category;
-    List_Sorted_Array<string> **subcatecory;
-    List_Sorted_Array<string> *subsubcategory;
-    DoublySortedLinkedList<SimpleProductType> catelist;
-    List_Sorted_Array<ItemType> m_list; //마스터리스트는 이미 애플리케이션에서 존재하는걸 가져와야하는데 어떻게 가져오지?
+    DoublySortedLinkedList<subCategoryType> subCategory;
+    DoublySortedLinkedList<CategoryType>& m_category;
 };
