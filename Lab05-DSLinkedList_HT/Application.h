@@ -17,6 +17,7 @@ using namespace std;
 */
 class Application
 {
+	friend class categorytype;
 public:
 	/**
 	*	����Ʈ ������.
@@ -137,7 +138,8 @@ public:
 private:
 	ifstream m_InFile;		///< �Է� ���� ��ũ����.
 	ofstream m_OutFile;		///< ��� ���� ��ũ����.
-	DoublySortedLinkedList<CategoryType> m_category; ///< ������ ����Ʈ.
+	DoublySortedLinkedList<ItemType> m_list; ///< ������ ����Ʈ.
+	DoublySortedLinkedList<CategoryType> catelist;
 	int m_Command;			///< ���� command ����.
 };
 

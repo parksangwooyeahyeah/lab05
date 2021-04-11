@@ -2,25 +2,35 @@
 #include "List_Sorted_Array.h"
 #include "SimpleProductType.h"
 #include "List_Sorted_SingleLink.h"
-#include "subcategorytype.h"
+#include "Application.h"
+
 
 #define MaxSize 5
+
 
 class CategoryType
 {
 public:
-    CategoryType(const DoublySortedLinkedList<CategoryType> &category) : m_category(category)
+    CategoryType()
     {
-      category = new doubly
+      itemNum = 0;
     }
     ~CategoryType(){}
 
     int AddToCatelist(SimpleProductType item);
     void DisplayCatelist();
-    int FindProductinCate(SimpleProductType item);
+
+    // int FindProductinCate();
 
 private:
     int itemNum;
-    DoublySortedLinkedList<subCategoryType> subCategory;
-    DoublySortedLinkedList<CategoryType>& m_category;
+    DoublySortedLinkedList<CategoryType> subcategory;
 };
+
+
+
+int CategoryType::AddToCatelist(SimpleProductType item)
+{ 
+    
+}
+
